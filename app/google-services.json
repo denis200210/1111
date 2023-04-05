@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "324763863939",
+    "project_id": "guidetovladivostok",
+    "storage_bucket": "guidetovladivostok.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324763863939:android:9f965fd2bdd7e7feb6c4b6",
+        "android_client_info": {
+          "package_name": "com.example.guidetovladivostok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324763863939-lc4527agh5si65qn9b2kc0mdnk4si16t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuPwPcXxcUlGTcTaA0q35ZBY1i5tlRKE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324763863939-lc4527agh5si65qn9b2kc0mdnk4si16t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
