@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageButton
-        android:id="@+id/imageButtonSettings"
+        android:id="@+id/imageButtonListLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_settings_24" />
+        app:srcCompat="@drawable/baseline_list_24" />
 
     <ImageButton
         android:id="@+id/imageButtonTraffic"
@@ -25,11 +25,11 @@
         android:background="@drawable/image_button_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonSettings"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonListLocation"
         app:srcCompat="@drawable/baseline_traffic_24" />
 
     <ImageButton
-        android:id="@+id/imageButtonAddLocation"
+        android:id="@+id/imageButtonInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -39,5 +39,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonTraffic"
-        app:srcCompat="@drawable/baseline_list_24" />
+        app:srcCompat="@drawable/baseline_info_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
