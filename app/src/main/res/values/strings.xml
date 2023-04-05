@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GuideToVladivostok</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address">Адрес</string>
+    <string name="add_location">Добавить локацию</string>
+    <string name="name_location">Название локации</string>
+    <string name="information_about_location">Информация о локации</string>
+    <string name="save">Сохранить</string>
+    <string name="get_directions">Проложить маршрут</string>
+    <string name="more">Подробнее</string>
 </resources>
