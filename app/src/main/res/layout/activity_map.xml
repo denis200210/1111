@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:id="@+id/constraintLayoutMapActivity"
+    tools:context=".activity.MapActivity">
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/yandexMap"
@@ -20,5 +21,14 @@
 
         <include layout="@layout/button_widget" />
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentAddPointOrInformationLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
