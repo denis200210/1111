@@ -35,6 +35,7 @@ import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.runtime.image.ImageProvider
 import java.util.*
 
+/** Активность для регистрации карты и ее показа, главная активность в приложении **/
 class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, DrivingRouteContract.View {
 
     private val ACCESS_FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION

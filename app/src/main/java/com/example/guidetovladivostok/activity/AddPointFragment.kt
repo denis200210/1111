@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import com.example.guidetovladivostok.R
 
+/** Класс отвечающий за получение информации о локации и дальнейшей передачи в класс отвечающий за сохранение в БД **/
 class AddPointFragment : Fragment() {
 
     private val NONE = "none"

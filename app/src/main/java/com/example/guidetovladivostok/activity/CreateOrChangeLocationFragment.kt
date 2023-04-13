@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.yandex.mapkit.geometry.Point
 
+/** Класс отвечает за добавление, изменение и просмотр информации о метке в/из БД **/
 class CreateOrChangeLocationFragment
     : Fragment(),
     CreateLocationContract.View,

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.guidetovladivostok.R
 import com.example.guidetovladivostok.dto.MarkerDto
 
-class ListLocationAdapter
-constructor(
+/** Адаптер для представления информации в RecyclerView **/
+class ListLocationAdapter constructor(
     onClickListener: OnClickListener<MarkerDto>,
     onLongClickListener: OnLongClickListener<MarkerDto>
 ) : RecyclerView.Adapter<ListLocationAdapter.LocationViewHolder>() {

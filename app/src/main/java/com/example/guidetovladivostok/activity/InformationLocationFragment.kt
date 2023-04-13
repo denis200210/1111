@@ -14,6 +14,7 @@ import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.presenter.DrivingRouteContract
 import com.yandex.mapkit.geometry.Point
 
+/** Класс отвечающий за показ информации о метке **/
 class InformationLocationFragment : Fragment() {
 
     private lateinit var markerDto: MarkerDto

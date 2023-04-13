@@ -15,6 +15,7 @@ import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.runtime.Error
 
+/** Класс для прокладывания маршрута до локации **/
 class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteContract.Service {
 
 

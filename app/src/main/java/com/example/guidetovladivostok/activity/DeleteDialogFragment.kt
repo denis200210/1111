@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import com.example.guidetovladivostok.presenter.DeleteLocationContract
 import com.example.guidetovladivostok.presenter.DeleteLocationPresenter
 
+/** Класс отвечает за показ диалогового окна удаления локации **/
 class DeleteDialogFragment constructor(documentId: String, nameLocation: String)
     : DialogFragment(), DeleteLocationContract.View{
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.guidetovladivostok.R
 import com.example.guidetovladivostok.activity.common.NetworkIsConnectedService
 
+/** Активность окна с информацией о приложении **/
 class AboutProgramActivity: AppCompatActivity() {
 
     private lateinit var constraintLayout: ConstraintLayout

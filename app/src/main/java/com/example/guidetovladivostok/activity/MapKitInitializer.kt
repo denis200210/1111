@@ -2,6 +2,7 @@ package com.example.guidetovladivostok.activity
 
 import com.yandex.mapkit.MapKitFactory
 
+/** Класс отвечающий за регистрацию карты **/
 object MapKitInitializer {
 
     private var initializer = false

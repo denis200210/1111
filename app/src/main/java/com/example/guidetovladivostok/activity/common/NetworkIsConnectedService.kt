@@ -14,6 +14,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.guidetovladivostok.R
 import com.google.android.material.snackbar.Snackbar
 
+/** Класс для проверки подключения к сети **/
 class NetworkIsConnectedService : AndroidViewModel {
 
     private val mConnected: MutableLiveData<Boolean> = MutableLiveData()

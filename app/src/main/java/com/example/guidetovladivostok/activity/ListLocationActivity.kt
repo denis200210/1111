@@ -17,6 +17,7 @@ import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.presenter.ListLocationContract
 import com.example.guidetovladivostok.presenter.ListLocationPresenter
 
+/** Активность отвечающая за показ списка локаций **/
 class ListLocationActivity: AppCompatActivity(), ListLocationContract.View<List<MarkerDto>> {
 
     private lateinit var toolbar: Toolbar

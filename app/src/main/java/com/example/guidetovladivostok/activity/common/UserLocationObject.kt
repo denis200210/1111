@@ -8,6 +8,7 @@ import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.image.ImageProvider
 
+/** Класс для установления иконки местоположения пользователя **/
 class UserLocationObject constructor(
     context: Context,
     locationUser: UserLocationLayer
