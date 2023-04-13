@@ -5,11 +5,11 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class MapRepository {
+class GetListLocationRepository {
 
     private val database = Firebase.firestore
 
-    fun getAllMarkers(): Task<QuerySnapshot> {
+    fun getListLocation(): Task<QuerySnapshot>{
         return database
             .collection(Database.MARKERS_TAG)
             .get()
