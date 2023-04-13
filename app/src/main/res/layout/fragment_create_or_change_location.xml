@@ -13,6 +13,18 @@
         android:layout_height="match_parent">
 
         <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_edit_24"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@+id/closeButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
             android:id="@+id/closeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +59,8 @@
                 android:hint="@string/name_location"
                 android:inputType="textMultiLine|textCapSentences"
                 android:maxLength="100"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -74,7 +87,8 @@
                 android:hint="@string/information_about_location"
                 android:inputType="textMultiLine|textCapSentences"
                 android:maxLength="800"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -95,7 +109,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="32dp"
-            android:text="@string/save"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
