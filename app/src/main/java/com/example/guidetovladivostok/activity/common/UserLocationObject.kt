@@ -1,6 +1,7 @@
-package com.example.guidetovladivostok
+package com.example.guidetovladivostok.activity.common
 
 import android.content.Context
+import com.example.guidetovladivostok.R
 import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
@@ -24,7 +25,6 @@ class UserLocationObject constructor(
         userLocationView
             .arrow
             .setIcon(ImageProvider.fromResource(context, R.drawable.navigation_arrow))
-
     }
 
     override fun onObjectRemoved(p0: UserLocationView) {
