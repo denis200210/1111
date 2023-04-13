@@ -2,19 +2,19 @@ package com.example.guidetovladivostok.entity
 
 import com.yandex.mapkit.geometry.Point
 
-class MarkerEntity constructor(
-    point: Point,
-    nameLocation: String,
-    informationLocation: String,
-    address: String
-) {
+class MarkerEntity()  {
 
-    private var nameLocation: String
-    private var informationLocation: String
-    private var address: String
-    private var point: Point
+    private lateinit var nameLocation: String
+    private lateinit var informationLocation: String
+    private lateinit var address: String
+    private lateinit var point: Point
 
-    init {
+    constructor(
+        point: Point,
+        nameLocation: String,
+        informationLocation: String,
+        address: String
+    ): this() {
         this.point = point
         this.nameLocation = nameLocation
         this.informationLocation = informationLocation
