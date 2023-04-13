@@ -1,6 +1,7 @@
 package com.example.guidetovladivostok.dto
 
 import com.yandex.mapkit.geometry.Point
+import java.io.Serializable
 
 class MarkerDto constructor(
     documentId: String,
@@ -8,7 +9,7 @@ class MarkerDto constructor(
     nameLocation: String,
     informationLocation: String,
     address: String
-) {
+): Serializable {
 
     private var documentId: String
     private var nameLocation: String
