@@ -9,4 +9,9 @@
     <string name="save">Сохранить</string>
     <string name="get_directions">Проложить маршрут</string>
     <string name="more">Подробнее</string>
+    <string name="update">Обновить</string>
+    <string name="list_is_empty">Список пуст</string>
+    <string name="about_program">О программе</string>
+    <string name="link">Ссылка на условия использования Яндекс.Карт: https://yandex.ru/legal/maps_termsofuse</string>
+    <string name="information_about_program">Данная программа создана в учебных целях. В программе используется набор инструментов для работы с картами Яндекс MapKit.</string>
 </resources>
