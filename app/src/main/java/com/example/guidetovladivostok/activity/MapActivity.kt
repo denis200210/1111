@@ -16,8 +16,8 @@ import com.example.guidetovladivostok.activity.common.DrivingRouteService
 import com.example.guidetovladivostok.activity.common.NetworkIsConnectedService
 import com.example.guidetovladivostok.activity.common.UserLocationObject
 import com.example.guidetovladivostok.dto.MarkerDto
-import com.example.guidetovladivostok.presenter.DrivingRouteContract
-import com.example.guidetovladivostok.presenter.MapContract
+import com.example.guidetovladivostok.contract.DrivingRouteContract
+import com.example.guidetovladivostok.contract.MapContract
 import com.example.guidetovladivostok.presenter.MapPresenter
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKit

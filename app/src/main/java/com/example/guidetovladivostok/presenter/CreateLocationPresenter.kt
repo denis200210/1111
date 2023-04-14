@@ -1,5 +1,6 @@
 package com.example.guidetovladivostok.presenter
 
+import com.example.guidetovladivostok.contract.CreateLocationContract
 import com.example.guidetovladivostok.entity.MarkerEntity
 import com.example.guidetovladivostok.model.CallBackOnClose
 import com.example.guidetovladivostok.model.CreateLocationModel

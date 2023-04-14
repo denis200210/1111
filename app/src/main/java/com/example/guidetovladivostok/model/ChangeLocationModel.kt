@@ -2,7 +2,7 @@ package com.example.guidetovladivostok.model
 
 import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.exception.ChangeLocationException
-import com.example.guidetovladivostok.presenter.ChangeLocationContract
+import com.example.guidetovladivostok.contract.ChangeLocationContract
 import com.example.guidetovladivostok.repository.ChangeLocationRepository
 
 class ChangeLocationModel: ChangeLocationContract.Model<MarkerDto, CallBackOnClose> {

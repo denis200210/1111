@@ -1,4 +1,4 @@
-package com.example.guidetovladivostok.presenter
+package com.example.guidetovladivostok.contract
 
 interface DeleteLocationContract {
     interface View{

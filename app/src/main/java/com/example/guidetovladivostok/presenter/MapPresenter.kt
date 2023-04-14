@@ -1,5 +1,6 @@
 package com.example.guidetovladivostok.presenter
 
+import com.example.guidetovladivostok.contract.MapContract
 import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.model.CallBackHandler
 import com.example.guidetovladivostok.model.ListLocationModel

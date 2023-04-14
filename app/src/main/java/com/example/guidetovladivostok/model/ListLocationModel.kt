@@ -4,8 +4,8 @@ import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.entity.MarkerEntity
 import com.example.guidetovladivostok.exception.ErrorRequestException
 import com.example.guidetovladivostok.mapper.MarkerMapper
-import com.example.guidetovladivostok.presenter.ListLocationContract
-import com.example.guidetovladivostok.presenter.MapContract
+import com.example.guidetovladivostok.contract.ListLocationContract
+import com.example.guidetovladivostok.contract.MapContract
 import com.example.guidetovladivostok.repository.GetListLocationRepository
 
 class ListLocationModel

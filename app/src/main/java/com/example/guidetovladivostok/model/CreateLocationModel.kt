@@ -2,7 +2,7 @@ package com.example.guidetovladivostok.model
 
 import com.example.guidetovladivostok.entity.MarkerEntity
 import com.example.guidetovladivostok.exception.CreateLocationException
-import com.example.guidetovladivostok.presenter.CreateLocationContract
+import com.example.guidetovladivostok.contract.CreateLocationContract
 import com.example.guidetovladivostok.repository.CreateLocationRepository
 
 class CreateLocationModel : CreateLocationContract.Model<MarkerEntity, CallBackOnClose>{

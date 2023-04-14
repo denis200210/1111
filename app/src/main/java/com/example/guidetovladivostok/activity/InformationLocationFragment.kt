@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import com.example.guidetovladivostok.R
 import com.example.guidetovladivostok.dto.MarkerDto
-import com.example.guidetovladivostok.presenter.DrivingRouteContract
+import com.example.guidetovladivostok.contract.DrivingRouteContract
 import com.yandex.mapkit.geometry.Point
 
 /** Класс отвечающий за показ информации о метке **/

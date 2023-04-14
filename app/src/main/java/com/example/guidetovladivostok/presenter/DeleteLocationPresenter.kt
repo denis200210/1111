@@ -1,5 +1,6 @@
 package com.example.guidetovladivostok.presenter
 
+import com.example.guidetovladivostok.contract.DeleteLocationContract
 import com.example.guidetovladivostok.model.DeleteLocationModel
 
 class DeleteLocationPresenter: DeleteLocationContract.Presenter {

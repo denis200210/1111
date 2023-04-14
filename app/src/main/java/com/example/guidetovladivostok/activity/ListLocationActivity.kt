@@ -14,7 +14,7 @@ import com.example.guidetovladivostok.adapter.ListLocationAdapter
 import com.example.guidetovladivostok.adapter.OnClickListener
 import com.example.guidetovladivostok.adapter.OnLongClickListener
 import com.example.guidetovladivostok.dto.MarkerDto
-import com.example.guidetovladivostok.presenter.ListLocationContract
+import com.example.guidetovladivostok.contract.ListLocationContract
 import com.example.guidetovladivostok.presenter.ListLocationPresenter
 
 /** Активность отвечающая за показ списка локаций **/

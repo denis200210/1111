@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.guidetovladivostok.R
-import com.example.guidetovladivostok.presenter.DrivingRouteContract
+import com.example.guidetovladivostok.contract.DrivingRouteContract
 
 /** Класс отвечающий за показ окна с информацией о маршруте **/
 class RouteFragment : Fragment() {

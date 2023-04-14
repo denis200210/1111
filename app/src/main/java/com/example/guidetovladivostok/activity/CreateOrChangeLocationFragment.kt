@@ -12,6 +12,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.guidetovladivostok.R
+import com.example.guidetovladivostok.contract.ChangeLocationContract
+import com.example.guidetovladivostok.contract.CreateLocationContract
 import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.entity.MarkerEntity
 import com.example.guidetovladivostok.presenter.*

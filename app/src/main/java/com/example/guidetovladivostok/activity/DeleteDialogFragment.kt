@@ -5,7 +5,7 @@ import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.example.guidetovladivostok.presenter.DeleteLocationContract
+import com.example.guidetovladivostok.contract.DeleteLocationContract
 import com.example.guidetovladivostok.presenter.DeleteLocationPresenter
 
 /** Класс отвечает за показ диалогового окна удаления локации **/

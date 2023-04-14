@@ -1,7 +1,7 @@
 package com.example.guidetovladivostok.model
 
 import com.example.guidetovladivostok.exception.ErrorRequestException
-import com.example.guidetovladivostok.presenter.DeleteLocationContract
+import com.example.guidetovladivostok.contract.DeleteLocationContract
 import com.example.guidetovladivostok.repository.DeleteLocationRepository
 
 class DeleteLocationModel: DeleteLocationContract.Model {

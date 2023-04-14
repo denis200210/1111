@@ -2,7 +2,7 @@ package com.example.guidetovladivostok.activity.common
 
 import android.content.Context
 import android.widget.Toast
-import com.example.guidetovladivostok.presenter.DrivingRouteContract
+import com.example.guidetovladivostok.contract.DrivingRouteContract
 import com.yandex.mapkit.RequestPoint
 import com.yandex.mapkit.RequestPointType
 import com.yandex.mapkit.directions.DirectionsFactory
