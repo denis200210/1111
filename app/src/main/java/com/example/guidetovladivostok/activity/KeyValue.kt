@@ -7,4 +7,5 @@ object KeyValue {
     const val KEY_LONGITUDE = "longitude"
     const val KEY_IS_CREATE = "isCreate"
     const val KEY_MARKER_DTO = "markerDto"
+    const val KEY_HOTEL_ENTITY = "hotelEntity"
 }
