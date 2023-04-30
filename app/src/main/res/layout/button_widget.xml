@@ -29,6 +29,18 @@
         app:srcCompat="@drawable/baseline_traffic_24" />
 
     <ImageButton
+        android:id="@+id/imageButtonHotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/image_button_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonTraffic"
+        app:srcCompat="@drawable/baseline_hotel_24" />
+
+    <ImageButton
         android:id="@+id/imageButtonInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +50,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButtonTraffic"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonHotel"
         app:srcCompat="@drawable/baseline_info_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
