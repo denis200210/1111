@@ -3,6 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="address">Адрес</string>
+    <string name="name_hotel">Название отеля</string>
+    <string name="working_time">Время работы</string>
+    <string name="phone_number">Номер телефона</string>
     <string name="add_location">Добавить локацию</string>
     <string name="name_location">Название локации</string>
     <string name="information_about_location">Информация о локации</string>
