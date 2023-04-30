@@ -24,11 +24,6 @@ class InformationLocationFragment : Fragment() {
     private lateinit var textNameLocation: TextView
     private lateinit var textAddress: TextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
