@@ -14,10 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.guidetovladivostok.R
 import com.example.guidetovladivostok.activity.common.DrivingRouteService
 import com.example.guidetovladivostok.activity.common.NetworkIsConnectedService
+import com.example.guidetovladivostok.activity.common.SearchHotels
 import com.example.guidetovladivostok.activity.common.UserLocationObject
 import com.example.guidetovladivostok.dto.MarkerDto
 import com.example.guidetovladivostok.contract.DrivingRouteContract
 import com.example.guidetovladivostok.contract.MapContract
+import com.example.guidetovladivostok.entity.HotelEntity
 import com.example.guidetovladivostok.presenter.MapPresenter
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKit
@@ -30,22 +32,30 @@ import com.yandex.mapkit.location.LocationStatus
 import com.yandex.mapkit.map.*
 import com.yandex.mapkit.map.Map
 import com.yandex.mapkit.mapview.MapView
+import com.yandex.mapkit.search.SearchManager
+import com.yandex.mapkit.search.SearchOptions
+import com.yandex.mapkit.search.SearchType
+import com.yandex.mapkit.search.Session
 import com.yandex.mapkit.traffic.TrafficLayer
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.runtime.image.ImageProvider
 import java.util.*
 
 /** Активность для регистрации карты и ее показа, главная активность в приложении **/
-class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, DrivingRouteContract.View {
+class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
+    DrivingRouteContract.View {
 
     private val ACCESS_FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION
     private val ACCESS_COARSE_LOCATION = android.Manifest.permission.ACCESS_COARSE_LOCATION
     private val PERMISSION_CODE = 200
 
+    private var isShowHotels = false
+    private lateinit var searchHotels: SearchHotels
     private lateinit var traffic: TrafficLayer
     private lateinit var mapView: MapView
     private lateinit var imageButtonTraffic: ImageButton
     private lateinit var imageButtonListLocation: ImageButton
+    private lateinit var imageButtonHotel: ImageButton
     private lateinit var imageButtonAboutProgram: ImageButton
     private lateinit var constraintLayout: ConstraintLayout
     private lateinit var mapKit: MapKit
@@ -62,6 +72,12 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
     private var mapObjectTapListener: MapObjectTapListener = MapObjectTapListener { mapObject, p1 ->
         val markerDto = mapObject.userData as MarkerDto
         startInformationLocationFragment(markerDto)
+        true
+    }
+
+    private var hotelObjectTapListener: MapObjectTapListener = MapObjectTapListener { mapObject, p1 ->
+        val hotelEntity = mapObject.userData as HotelEntity
+        startInfoHotelFragment(hotelEntity)
         true
     }
 
@@ -102,12 +118,14 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
         presenter = MapPresenter(this)
         imageButtonTraffic = findViewById(R.id.imageButtonTraffic)
         imageButtonListLocation = findViewById(R.id.imageButtonListLocation)
+        imageButtonHotel = findViewById(R.id.imageButtonHotel)
         imageButtonAboutProgram = findViewById(R.id.imageButtonInfo)
         constraintLayout = findViewById(R.id.constraintLayoutMapActivity)
         mapView = findViewById(R.id.yandexMap)
         mapKit = MapKitFactory.getInstance()
         traffic = mapKit.createTrafficLayer(mapView.mapWindow)
         mapObjects = mapView.map.mapObjects.addCollection()
+        searchHotels = SearchHotels(mapView, applicationContext, hotelObjectTapListener)
         contractService = DrivingRouteService(
             this,
             mapObjects
@@ -172,6 +190,7 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
                         null
                     )
             }
+
             override fun onLocationStatusUpdated(p0: LocationStatus) {
 
             }
@@ -191,6 +210,18 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
             )
             startActivity(intent)
         }
+
+        imageButtonHotel.setOnClickListener {
+            isShowHotels = if (isShowHotels) {
+                searchHotels.hideHotels()
+                presenter.showAllMarkers()
+                false
+            } else {
+                searchHotels.showHotels()
+                true
+            }
+        }
+
         imageButtonAboutProgram.setOnClickListener {
             val intent = Intent(
                 this@MapActivity,
@@ -198,6 +229,19 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
             )
             startActivity(intent)
         }
+    }
+
+    private fun startInfoHotelFragment(hotelEntity: HotelEntity){
+        val bundle = Bundle()
+        bundle.putSerializable(KeyValue.KEY_HOTEL_ENTITY, hotelEntity)
+        removeFragments()
+        supportFragmentManager
+            .beginTransaction()
+            .add(
+                R.id.fragmentAddPointOrInformationLocation,
+                InfoHotelFragment::class.java,
+                bundle
+            ).commit()
     }
 
     private fun startAddPointFragment(point: Point, address: String) {
@@ -228,7 +272,7 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
             ).commit()
     }
 
-    private fun removeFragments(){
+    private fun removeFragments() {
         supportFragmentManager.apply {
             for (fragment: Fragment in fragments) {
                 beginTransaction().remove(fragment).commit()
@@ -271,7 +315,7 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
         marker.addTapListener(mapObjectTapListener)
     }
 
-    private fun startRouteFragment(nameLocation: String){
+    private fun startRouteFragment(nameLocation: String) {
         val bundle = Bundle()
         bundle.putString(KeyValue.KEY_NAME_LOCATION, nameLocation)
         supportFragmentManager
@@ -292,7 +336,7 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>, Driv
         contractService.deleteRouter()
     }
 
-    private fun isConnected(){
+    private fun isConnected() {
         val networkIsConnectedService: NetworkIsConnectedService =
             ViewModelProvider(this)[NetworkIsConnectedService::class.java]
         networkIsConnectedService.isConnected(
