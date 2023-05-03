@@ -26,7 +26,10 @@ class ListLocationModel
                             .getEntityToDto(value.toObject(MarkerEntity::class.java))
                     }
                     .toList()
-                callBack.execute(listDto)
+
+                if (listDto.isNotEmpty()) {
+                    callBack.execute(listDto)
+                }
             }
             .addOnFailureListener {
                 throw ErrorRequestException("Не удалось выполнить запрос")
