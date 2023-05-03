@@ -7,6 +7,7 @@ import com.example.guidetovladivostok.entity.HotelEntity
 import com.yandex.mapkit.GeoObjectCollection
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.mapkit.map.MapObjectTapListener
+import com.yandex.mapkit.map.PlacemarkMapObject
 import com.yandex.mapkit.map.VisibleRegionUtils
 import com.yandex.mapkit.mapview.MapView
 import com.yandex.mapkit.search.*
@@ -15,12 +16,12 @@ import com.yandex.runtime.image.ImageProvider
 
 class SearchHotels : Session.SearchListener {
 
+    private lateinit var session: Session
+    private var listPlacemark: MutableList<PlacemarkMapObject> = ArrayList()
     private val searchManager: SearchManager
     private val mapView: MapView
     private val context: Context
     private val mapObjects: MapObjectCollection
-    private lateinit var session: Session
-
     private var mapObjectTapListener: MapObjectTapListener
 
     constructor(mapView: MapView, context: Context, mapObjectTapListener: MapObjectTapListener) {
@@ -43,7 +44,8 @@ class SearchHotels : Session.SearchListener {
     }
 
     fun hideHotels() {
-        mapObjects.clear()
+        listPlacemark.stream().forEach { placemark -> mapObjects.remove(placemark) }
+        listPlacemark.clear()
     }
 
     override fun onSearchResponse(response: Response) {
@@ -92,6 +94,7 @@ class SearchHotels : Session.SearchListener {
 
                 marker.userData = hotelEntity
                 marker.addTapListener(mapObjectTapListener)
+                listPlacemark.add(marker)
             }
         }
     }
