@@ -13,12 +13,13 @@ import com.yandex.mapkit.directions.driving.DrivingSession
 import com.yandex.mapkit.directions.driving.VehicleOptions
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.MapObjectCollection
+import com.yandex.mapkit.map.PolylineMapObject
 import com.yandex.runtime.Error
 
 /** Класс для прокладывания маршрута до локации **/
 class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteContract.Service {
 
-
+    private lateinit var polyLineDrivingRouter: PolylineMapObject
     private lateinit var drivingSession: DrivingSession
     private var context: Context
     private var mapObjects: MapObjectCollection
@@ -38,15 +39,16 @@ class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteCon
         drivingSession = drivingRouter.requestRoutes(points, drivingOptions, vehicleOptions, this)
     }
 
-    override fun deleteRouter(){
-        mapObjects.clear()
+    override fun deleteRouter() {
+        if(polyLineDrivingRouter.isVisible) {
+            polyLineDrivingRouter.parent.clear()
+        }
     }
 
     override fun onDrivingRoutes(list: MutableList<DrivingRoute>) {
-        if(list.isNotEmpty()) {
-            deleteRouter()
-            mapObjects.addPolyline(list[0].geometry)
-        } else{
+        if (list.isNotEmpty()) {
+            polyLineDrivingRouter = mapObjects.addPolyline(list[0].geometry)
+        } else {
             Toast
                 .makeText(context, "Маршрут не найден", Toast.LENGTH_LONG)
                 .show()
