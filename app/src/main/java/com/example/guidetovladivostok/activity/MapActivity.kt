@@ -75,11 +75,12 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
         true
     }
 
-    private var hotelObjectTapListener: MapObjectTapListener = MapObjectTapListener { mapObject, p1 ->
-        val hotelEntity = mapObject.userData as HotelEntity
-        startInfoHotelFragment(hotelEntity)
-        true
-    }
+    private var hotelObjectTapListener: MapObjectTapListener =
+        MapObjectTapListener { mapObject, p1 ->
+            val hotelEntity = mapObject.userData as HotelEntity
+            startInfoHotelFragment(hotelEntity)
+            true
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -231,7 +232,7 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
         }
     }
 
-    private fun startInfoHotelFragment(hotelEntity: HotelEntity){
+    private fun startInfoHotelFragment(hotelEntity: HotelEntity) {
         val bundle = Bundle()
         bundle.putSerializable(KeyValue.KEY_HOTEL_ENTITY, hotelEntity)
         removeFragments()
@@ -328,8 +329,10 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
     }
 
     override fun buildDrivingRouter(nameLocation: String, endPosition: Point) {
-        startRouteFragment(nameLocation)
-        contractService.buildDrivingRouter(locationUserPosition, endPosition)
+        if (this::locationUserPosition.isInitialized) {
+            startRouteFragment(nameLocation)
+            contractService.buildDrivingRouter(locationUserPosition, endPosition)
+        }
     }
 
     override fun deleteRouter() {
