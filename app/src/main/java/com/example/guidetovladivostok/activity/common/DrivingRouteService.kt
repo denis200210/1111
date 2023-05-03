@@ -19,7 +19,7 @@ import com.yandex.runtime.Error
 /** Класс для прокладывания маршрута до локации **/
 class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteContract.Service {
 
-    private lateinit var polyLineDrivingRouter: PolylineMapObject
+    private var polyLineDrivingRouter: PolylineMapObject? = null
     private lateinit var drivingSession: DrivingSession
     private var context: Context
     private var mapObjects: MapObjectCollection
@@ -40,13 +40,13 @@ class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteCon
     }
 
     override fun deleteRouter() {
-        if(polyLineDrivingRouter.isVisible) {
-            polyLineDrivingRouter.parent.clear()
-        }
+        polyLineDrivingRouter?.parent?.clear()
+        polyLineDrivingRouter = null
     }
 
     override fun onDrivingRoutes(list: MutableList<DrivingRoute>) {
         if (list.isNotEmpty()) {
+            deleteRouter()
             polyLineDrivingRouter = mapObjects.addPolyline(list[0].geometry)
         } else {
             Toast
