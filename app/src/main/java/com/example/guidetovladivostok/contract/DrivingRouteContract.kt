@@ -8,7 +8,12 @@ interface DrivingRouteContract {
         fun deleteRouter()
     }
     interface Service{
-        fun buildDrivingRouter(startPosition: Point, endPosition: Point)
+        fun isLimitSize(): Boolean
+        fun isEmptyPositions(): Boolean
+        fun isNotEmptyPositions(): Boolean
+        fun setPosition(position: Point)
+        fun deletePoints()
+        fun buildDrivingRouter()
         fun deleteRouter()
     }
 }

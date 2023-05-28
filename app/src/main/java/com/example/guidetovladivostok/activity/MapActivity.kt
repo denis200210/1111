@@ -48,8 +48,10 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
     private val ACCESS_FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION
     private val ACCESS_COARSE_LOCATION = android.Manifest.permission.ACCESS_COARSE_LOCATION
     private val PERMISSION_CODE = 200
+    private val NONE = "NONE"
 
     private var isShowHotels = false
+    private lateinit var lastNameLocation: String
     private lateinit var searchHotels: SearchHotels
     private lateinit var traffic: TrafficLayer
     private lateinit var mapView: MapView
@@ -276,7 +278,9 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
     private fun removeFragments() {
         supportFragmentManager.apply {
             for (fragment: Fragment in fragments) {
-                beginTransaction().remove(fragment).commit()
+                if (fragment.javaClass != RouteFragment::class.java) {
+                    beginTransaction().remove(fragment).commit()
+                }
             }
         }
     }
@@ -316,9 +320,12 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
         marker.addTapListener(mapObjectTapListener)
     }
 
-    private fun startRouteFragment(nameLocation: String) {
+    private fun startRouteFragment(nameLocation: String, intermediateNameLocation: String = NONE) {
+        closeDrivingRouterFragment()
+
         val bundle = Bundle()
         bundle.putString(KeyValue.KEY_NAME_LOCATION, nameLocation)
+        bundle.putString(KeyValue.KEY_INTERMEDIATE_NAME_LOCATION, intermediateNameLocation)
         supportFragmentManager
             .beginTransaction()
             .add(
@@ -330,13 +337,46 @@ class MapActivity : AppCompatActivity(), MapContract.View<List<MarkerDto>>,
 
     override fun buildDrivingRouter(nameLocation: String, endPosition: Point) {
         if (this::locationUserPosition.isInitialized) {
-            startRouteFragment(nameLocation)
-            contractService.buildDrivingRouter(locationUserPosition, endPosition)
+
+            if (contractService.isLimitSize()){
+                contractService.deletePoints()
+            }
+
+            if (contractService.isEmptyPositions()) {
+                startRouteFragment(nameLocation)
+
+                contractService.setPosition(locationUserPosition)
+                contractService.setPosition(endPosition)
+                contractService.buildDrivingRouter()
+            } else {
+                startRouteFragment(nameLocation, lastNameLocation)
+
+                contractService.setPosition(endPosition)
+                contractService.buildDrivingRouter()
+            }
+
+            lastNameLocation = nameLocation
         }
     }
 
     override fun deleteRouter() {
+        contractService.deletePoints()
         contractService.deleteRouter()
+    }
+
+    private fun closeDrivingRouterFragment() {
+        if (supportFragmentManager.fragments.isNotEmpty()) {
+            supportFragmentManager
+                .fragments
+                .stream()
+                .filter { it.javaClass == RouteFragment::class.java }
+                .forEach {
+                    supportFragmentManager
+                        .beginTransaction()
+                        .remove(it)
+                        .commit()
+                }
+        }
     }
 
     private fun isConnected() {

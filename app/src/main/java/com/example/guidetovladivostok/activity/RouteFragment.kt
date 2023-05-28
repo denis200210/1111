@@ -13,11 +13,12 @@ import com.example.guidetovladivostok.contract.DrivingRouteContract
 /** Класс отвечающий за показ окна с информацией о маршруте **/
 class RouteFragment : Fragment() {
 
-    private val NONE = "none"
+    private val NONE = "NONE"
 
     private lateinit var textNameLocation: TextView
     private lateinit var buttonClose: ImageButton
     private lateinit var nameLocation: String
+    private lateinit var intermediateNameLocation: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +43,19 @@ class RouteFragment : Fragment() {
             savedInstanceState.getString(KeyValue.KEY_NAME_LOCATION, NONE)
         }
 
-        textNameLocation.text = "Маршрут до: $nameLocation"
+        intermediateNameLocation = if (savedInstanceState == null){
+            arguments?.getString(KeyValue.KEY_INTERMEDIATE_NAME_LOCATION) ?: NONE
+        } else {
+            savedInstanceState.getString(KeyValue.KEY_INTERMEDIATE_NAME_LOCATION, NONE)
+        }
+
+        if(intermediateNameLocation == NONE){
+            textNameLocation.text = "Маршрут до: $nameLocation"
+        }else{
+            textNameLocation.text = "Маршрут до: $nameLocation\n" +
+                    "Через: $intermediateNameLocation"
+        }
+
         buttonClose.setOnClickListener {
             (activity as DrivingRouteContract.View).deleteRouter()
             closeFragment()

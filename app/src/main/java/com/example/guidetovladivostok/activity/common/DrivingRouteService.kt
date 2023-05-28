@@ -19,6 +19,7 @@ import com.yandex.runtime.Error
 /** Класс для прокладывания маршрута до локации **/
 class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteContract.Service {
 
+    private val points: MutableList<RequestPoint> = ArrayList()
     private var polyLineDrivingRouter: PolylineMapObject? = null
     private lateinit var drivingSession: DrivingSession
     private var context: Context
@@ -30,10 +31,27 @@ class DrivingRouteService : DrivingSession.DrivingRouteListener, DrivingRouteCon
         this.mapObjects = mapObjects
     }
 
-    override fun buildDrivingRouter(startPosition: Point, endPosition: Point) {
-        val points: MutableList<RequestPoint> = ArrayList()
-        points.add(RequestPoint(startPosition, RequestPointType.WAYPOINT, null))
-        points.add(RequestPoint(endPosition, RequestPointType.WAYPOINT, null))
+    override fun isLimitSize(): Boolean {
+        return points.size >= 3
+    }
+
+    override fun isEmptyPositions(): Boolean {
+        return points.isEmpty()
+    }
+
+    override fun isNotEmptyPositions(): Boolean {
+        return points.isNotEmpty()
+    }
+
+    override fun setPosition(position: Point){
+        points.add(RequestPoint(position, RequestPointType.WAYPOINT, null))
+    }
+
+    override fun deletePoints() {
+        points.clear()
+    }
+
+    override fun buildDrivingRouter() {
         val drivingOptions = DrivingOptions()
         val vehicleOptions = VehicleOptions()
         drivingSession = drivingRouter.requestRoutes(points, drivingOptions, vehicleOptions, this)
